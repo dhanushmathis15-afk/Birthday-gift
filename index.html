@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday!</title>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffb199);
+    overflow:hidden;
+}
+
+.container{
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+h1{
+    font-size:3rem;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px white;
+    }
+    to{
+        text-shadow:0 0 30px yellow,0 0 50px gold;
+    }
+}
+
+.photo{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    object-fit:cover;
+    border:6px solid white;
+    margin:20px 0;
+    box-shadow:0 0 20px rgba(255,255,255,0.8);
+}
+
+.message{
+    font-size:1.2rem;
+    max-width:600px;
+    margin:auto;
+    line-height:1.8;
+}
+
+button{
+    margin-top:25px;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#ff4081;
+    font-size:1rem;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+.balloon{
+    position:absolute;
+    bottom:-150px;
+    width:60px;
+    animation:float 10s infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+@media(max-width:600px){
+    h1{
+        font-size:2rem;
+    }
+
+    .photo{
+        width:170px;
+        height:170px;
+    }
+
+    .message{
+        font-size:1rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<img src="https://cdn-icons-png.flaticon.com/512/3468/3468373.png"
+class="balloon"
+style="left:10%; animation-duration:9s;">
+
+<img src="https://cdn-icons-png.flaticon.com/512/3468/3468373.png"
+class="balloon"
+style="left:50%; animation-duration:12s;">
+
+<img src="https://cdn-icons-png.flaticon.com/512/3468/3468373.png"
+class="balloon"
+style="left:80%; animation-duration:10s;">
+
+<div class="container">
+
+<h1>🎂 Happy Birthday My Friend 🎉</h1>
+
+<!-- Friend Photo -->
+<img src="friend.jpg" alt="Friend Photo" class="photo">
+
+<p class="message">
+Wishing you a day filled with happiness, laughter, success and lots of love.
+May all your dreams come true and may this year bring endless joy to your life.
+🥳✨🎁
+</p>
+
+<button onclick="celebrate()">🎊 Celebrate</button>
+
+</div>
+
+<script>
+function celebrate(){
+
+    var duration = 5000;
+    var end = Date.now() + duration;
+
+    (function frame() {
+        confetti({
+            particleCount: 8,
+            angle: 60,
+            spread: 80,
+            origin: { x: 0 }
+        });
+
+        confetti({
+            particleCount: 8,
+            angle: 120,
+            spread: 80,
+            origin: { x: 1 }
+        });
+
+        if (Date.now() < end) {
+            requestAnimationFrame(frame);
+        }
+    }());
+}
+
+window.onload = function(){
+    celebrate();
+}
+</script>
+
+</body>
+</html>
